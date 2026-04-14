@@ -1,59 +1,46 @@
 def fibonacci(n):
-    a = 1
-    b = 1
-    i = 0
+    a, b = 1, 1
     hasil = []
 
-    while i < n:
+    for i in range(n):
         hasil.append(a)
-        c = a + b
-        a = b
-        b = c
-        i += 1
+        a, b = b, a + b
 
     return hasil
 
 while True:
-    print("\nPILIHAN MENU\nNIM GENAP")
-    print("Menu Pilihan:")
+    print("\nNIM GENAP")
+    print("Pilihan menu:")
     print("1. Barisan Fibonacci")
-    print("2. Perkalian N x M")
+    print("2. Perkalian (M x N)")
     print("0. Keluar")
 
     pilih = int(input("Pilih menu : "))
 
     if pilih == 1:
         jumlah = int(input("Masukkan jumlah suku : "))
-        data = fibonacci(jumlah)
+        fibo = fibonacci(jumlah)
 
         print("Barisan fibonacci sebanyak", jumlah, "suku :")
-        
-        i = 0
-        while i < len(data):
-            print(data[i], end=", ")
-            i += 1
+        for angka in fibo:
+            print(angka, end=", ")
         print()
 
     elif pilih == 2:
-        angka = int(input("Masukkan suatu bilangan bulat : "))
-        kali = int(input("Masukkan suatu bilangan pengali : "))
+        M = int(input("Masukkan bilangan bulat (M) : "))
+        N = int(input("Masukkan bilangan pengali (N) : "))
 
-        pola = fibonacci(kali)
-
+        pola = fibonacci(N)
         print("Pola fibonacci :", end=" ")
-        i = 0
-        while i < len(pola):
-            print(pola[i], end=" ")
-            i += 1
+        for angka in pola:
+            print(angka, end=" ")
         print()
 
         hasil = 0
-        i = 0
-        while i < kali:
-            hasil += angka
-            i += 1
+        for i in range(N):
+            hasil += M
 
-        print(angka, "x", kali, "=", hasil)
+        print("Hasil akhir :", M, "x", N, "=", hasil)
 
     elif pilih == 0:
         print("Program selesai.")
